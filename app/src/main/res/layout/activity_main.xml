@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color">
+
+    <TextView
+        android:id="@+id/editText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="none"
+        android:text="@string/hello_world"
+        android:textColor="@color/text_color_secondary"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/button_to_lists"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:text="Lists"
+        android:onClick="toLists"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        style="@style/ButtonStyle"
+        android:background="@color/button_background_color" />
+
+    <Button
+        android:id="@+id/button_to_stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:text="Statistics"
+        android:onClick="toStats"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        style="@style/ButtonStyle"
+        android:background="@color/button_background_color" />
+</LinearLayout>

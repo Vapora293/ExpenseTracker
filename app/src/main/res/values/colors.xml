@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background color -->
+    <color name="background_color">#E6F0FA</color>
+
+    <!-- Button colors -->
+    <color name="button_background_color">#2979FF</color>
+    <color name="button_text_color">#FFFFFF</color>
+
+    <!-- Text area color -->
+    <color name="text_area_color">#D1E7F7</color>
+
+    <!-- Text color for buttons and text areas -->
+    <color name="text_color_primary">#000000</color>
+
+    <!-- Text color for labels with no background -->
+    <color name="text_color_secondary">#808080</color>
+</resources>
