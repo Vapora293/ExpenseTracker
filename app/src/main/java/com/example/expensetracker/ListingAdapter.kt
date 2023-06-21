@@ -1,45 +1,57 @@
 package com.example.expensetracker
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.room.Room
 
-class ListingAdapter: BaseAdapter {
-    private var context: Context
-    private val listingNames: ArrayList<String?>
+class ListingAdapter(
+    private val context: Context,
+    private val listings: ArrayList<String?>
+) : ArrayAdapter<String?>(context, 0, listings) {
 
-    constructor(
-        context: Context,
-        listingNames: ArrayList<String?>
-    ) : super() {
-        this.context = context
-        this.listingNames = listingNames
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        var view = convertView
+        val holder: ViewHolder
+
+        if (view == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.listing_list_item, parent, false)
+            holder = ViewHolder(view)
+            view.tag = holder
+        } else {
+            holder = view.tag as ViewHolder
+        }
+
+        val listingName = listings[position]
+        holder.listName.text = listingName
+
+        // Set click listener for the item view
+        view?.setOnClickListener {
+            val listingDao = Room.databaseBuilder(
+                context.applicationContext,
+                AppDatabase::class.java, "listingdatabase"
+            ).allowMainThreadQueries().enableMultiInstanceInvalidation()
+                .fallbackToDestructiveMigration().build().listDao()
+            moveToListItems(position, listingDao)
+        }
+
+        return view!!
     }
 
-    override fun getCount(): Int {
-        return listingNames.size
+    private fun moveToListItems(position: Int, listingDao: DaoList) {
+        val selectedListing = listings[position]
+
+        val intent = Intent(context, ListItemsActivity::class.java)
+        intent.putExtra("listingId", selectedListing?.let { listingDao.getIdByName(it) })
+        context.startActivity(intent)
     }
 
-    override fun getItem(position: Int): String? {
-        return listingNames[position]
+    private class ViewHolder(view: View) {
+        val listName: TextView = view.findViewById(R.id.list_name)
     }
-
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val layoutInflater =
-            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val itemView = layoutInflater.inflate(R.layout.listing_list_item, null, true)
-        val listingTextView = itemView.findViewById<TextView>(R.id.list_name)
-        val evaluationTextView = itemView.findViewById<TextView>(R.id.current_balance)
-        listingTextView.text = getItem(position).toString()
-        evaluationTextView.text = "+test"
-        return itemView
-    }
-
 }

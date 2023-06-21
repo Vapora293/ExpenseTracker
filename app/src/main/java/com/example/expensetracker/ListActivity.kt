@@ -30,14 +30,17 @@ class ListActivity : AppCompatActivity() {
         var adapter = ListingAdapter(this, names)
         listing_list.adapter = adapter
 
-        // Move this code outside the onCreate method
-        listing_list.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            val selectedListing = listOfListings[position]
-
-            val intent = Intent(this, ListItemsActivity::class.java)
-            intent.putExtra("listingId", selectedListing.name?.let { listingDao.getIdByName(it) })
-            startActivity(intent)
+        listing_list.setOnItemClickListener { parent, view, position, id ->
+            moveToListItems(position, listingDao)
         }
+    }
+
+    private fun moveToListItems(position: Int, listingDao: DaoList) {
+        val selectedListing = listOfListings[position]
+
+        val intent = Intent(this, ListItemsActivity::class.java)
+        intent.putExtra("listingId", selectedListing.name?.let { listingDao.getIdByName(it) })
+        startActivity(intent)
     }
 
     fun toListCreation(view: View) {}
