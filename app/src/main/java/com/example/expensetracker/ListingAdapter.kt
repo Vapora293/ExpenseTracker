@@ -2,11 +2,12 @@ package com.example.expensetracker
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.BaseAdapter
+import android.widget.ListView
 import android.widget.TextView
 import androidx.room.Room
 
@@ -30,24 +31,28 @@ class ListingAdapter(
         val listingName = listings[position]
         holder.listName.text = listingName
 
-        // Set click listener for the item view
         view?.setOnClickListener {
             val listingDao = Room.databaseBuilder(
                 context.applicationContext,
                 AppDatabase::class.java, "listingdatabase"
             ).allowMainThreadQueries().enableMultiInstanceInvalidation()
-                .fallbackToDestructiveMigration().build().listDao()
-            moveToListItems(position, listingDao)
+                .fallbackToDestructiveMigration().build().checklistDao()
+            moveToListItems(position, listingDao, view)
         }
 
         return view!!
     }
 
-    private fun moveToListItems(position: Int, listingDao: DaoList) {
+    private fun moveToListItems(position: Int, listingDao: DaoChecklist, view: View) {
         val selectedListing = listings[position]
 
-        val intent = Intent(context, ListItemsActivity::class.java)
-        intent.putExtra("listingId", selectedListing?.let { listingDao.getIdByName(it) })
+        val intent = Intent(context, ExpenseItemsActivity::class.java)
+        val textView = view.findViewById<TextView>(R.id.list_name)
+        intent.putExtra("listingId", listingDao.getIdByName(textView.text as String).toString())
+        val returnable = intent.getStringExtra("listingId")
+        if (returnable != null) {
+            Log.i("flag", returnable)
+        }
         context.startActivity(intent)
     }
 

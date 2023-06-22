@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:id="@+id/expense_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_above="@+id/button_create_expense" />
+
+    <Button
+        android:id="@+id/button_create_expense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:text="Add new expense"
+        android:onClick="toExpenseCreation"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        style="@style/ButtonStyle"
+        android:background="@color/button_background_color"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

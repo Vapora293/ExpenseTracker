@@ -5,9 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class ListItem(
+data class Checklist(
     @PrimaryKey(autoGenerate = true) val id: Int,
-    @ColumnInfo(name = "name") val name: String?,
-    @ColumnInfo(name = "category") val category: String?,
-    @ColumnInfo(name = "balance") val balance: Int
+    @ColumnInfo(name = "name") val name: String?
 )
+
+

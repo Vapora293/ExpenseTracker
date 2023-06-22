@@ -16,13 +16,13 @@ class MainActivity : AppCompatActivity() {
             AppDatabase::class.java, "listingdatabase"
         ).allowMainThreadQueries().enableMultiInstanceInvalidation()
             .fallbackToDestructiveMigration().build()
-        val listDAO = db.listDao()
-        val listing = Listing(id = 0, name = "Roza")
-        listDAO.insertAll(listing)
+        val listDAO = db.checklistDao()
+        val checklist = Checklist(id = 0, name = "Roza")
+        listDAO.insertAll(checklist)
     }
 
     fun toLists(view: View) {
-        startActivity(Intent(this, ListActivity::class.java))
+        startActivity(Intent(this, ChecklistActivity::class.java))
     }
     fun toStats(view: View) {
         startActivity(Intent(this, StatsActivity::class.java))
