@@ -28,7 +28,7 @@ class ExpenseItemActivity : AppCompatActivity() {
             listOfExpenses = expenseItemDao.getItemsByChecklist(checklistId) as ArrayList<ExpenseItem>
         }
         var expenseItemList = findViewById<ListView>(R.id.expense_list)
-        var adapter = ExpenseItemAdapter(this, listOfExpenses)
+        var adapter = ExpenseItemAdapter(this, listOfExpenses, expenseItemDao)
         expenseItemList.adapter = adapter
 
         val createExpenseButton = findViewById<Button>(R.id.button_create_expense)

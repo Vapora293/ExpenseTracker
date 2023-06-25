@@ -32,7 +32,8 @@
         android:gravity="center"
         android:hint="Type the balance (+/-)"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:inputType="numberDecimal|numberSigned" />
 
     <Button
         android:id="@+id/create_expense_button"

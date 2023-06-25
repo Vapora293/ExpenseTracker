@@ -18,6 +18,7 @@ data class ExpenseItem(
     @ColumnInfo(name = "checklistId") val checklistId: Int,
     @ColumnInfo(name = "name") val name: String?,
     @ColumnInfo(name = "category") val category: String?,
-    @ColumnInfo(name = "balance") val balance: Double
+    @ColumnInfo(name = "balance") val balance: Double,
+    @ColumnInfo(name = "isCrossedOut") var isCrossedOut: Boolean = false
 )
 

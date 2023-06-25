@@ -27,15 +27,34 @@
         style="@style/ButtonStyle"
         android:background="@color/button_background_color" />
 
-    <Button
-        android:id="@+id/button_to_stats"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewOverallExpenses"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5sp"
-        android:text="Statistics"
-        android:onClick="toStats"
+        android:text="Overall Expenses:"
+        android:textColor="@color/text_color_primary"
         android:textSize="20sp"
         android:textStyle="bold"
-        style="@style/ButtonStyle"
-        android:background="@color/button_background_color" />
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/textViewOverallIncome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Overall Income:"
+        android:textColor="@color/text_color_primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/textViewOverallBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Overall Balance:"
+        android:textColor="@color/text_color_primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="8dp" />
+
 </LinearLayout>

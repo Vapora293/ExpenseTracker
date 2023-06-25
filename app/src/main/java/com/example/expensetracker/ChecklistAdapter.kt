@@ -34,6 +34,14 @@ class ChecklistAdapter(
         holder.listName.text = checklistName
         holder.current_balance.text = checklistBalance.toString() + "€"
 
+        val colorRes = if (checklistBalance >= 0) {
+            context.resources.getColor(android.R.color.holo_red_dark)
+        } else {
+            context.resources.getColor(android.R.color.holo_green_dark)
+        }
+        holder.current_balance.setTextColor(colorRes)
+
+
         view?.setOnClickListener {
             val selectedChecklist = checklists[position]
 
