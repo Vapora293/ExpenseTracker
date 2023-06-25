@@ -13,7 +13,7 @@
         android:theme="@style/Theme.ExpenseTracker"
         tools:targetApi="31">
         <activity
-            android:name=".ExpenseItemsActivity"
+            android:name=".ExpenseItemActivity"
             android:exported="false" />
         <activity
             android:name=".StatsActivity"

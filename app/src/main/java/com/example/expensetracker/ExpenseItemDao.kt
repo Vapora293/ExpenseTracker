@@ -6,12 +6,15 @@ import androidx.room.Insert
 import androidx.room.Query
 
 @Dao
-interface DaoExpenseItem {
+interface ExpenseItemDao {
     @Query("SELECT * FROM expenseitem")
     fun getAll(): List<ExpenseItem>
 
     @Query("SELECT * FROM expenseitem WHERE checklistId=:checklistId")
     fun getItemsByChecklist(checklistId: String): List<ExpenseItem>
+
+    @Query("SELECT SUM(balance) from expenseitem WHERE checklistId=:checklistId")
+    fun getBalanceSumByChecklist(checklistId: String): Double
 
     @Insert
     fun insertAll(vararg expenseItems: ExpenseItem)

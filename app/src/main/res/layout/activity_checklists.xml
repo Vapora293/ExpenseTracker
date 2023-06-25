@@ -9,10 +9,10 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        android:layout_above="@+id/button_create_expense" />
+        android:layout_above="@+id/button_create_checklist" />
 
     <Button
-        android:id="@+id/button_create_expense"
+        android:id="@+id/button_create_checklist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5sp"

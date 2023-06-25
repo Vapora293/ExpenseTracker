@@ -6,7 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 
 @Dao
-interface DaoChecklist {
+interface ChecklistDao {
     @Query("SELECT * FROM checklist")
     fun getAll(): List<Checklist>
 

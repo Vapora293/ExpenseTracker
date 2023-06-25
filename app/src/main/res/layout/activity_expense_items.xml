@@ -17,7 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="5sp"
         android:text="Add new expense"
-        android:onClick="toExpenseCreation"
         android:textSize="20sp"
         android:textStyle="bold"
         style="@style/ButtonStyle"

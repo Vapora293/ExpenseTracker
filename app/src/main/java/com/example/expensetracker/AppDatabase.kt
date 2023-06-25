@@ -3,8 +3,8 @@ package com.example.expensetracker
 import androidx.room.Database
 import androidx.room.RoomDatabase
 
-@Database(entities = arrayOf(Checklist::class, ExpenseItem::class), version = 5)
+@Database(entities = arrayOf(Checklist::class, ExpenseItem::class), version = 7)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun checklistDao(): DaoChecklist
-    abstract fun expenseItemDao(): DaoExpenseItem
+    abstract fun checklistDao(): ChecklistDao
+    abstract fun expenseItemDao(): ExpenseItemDao
 }

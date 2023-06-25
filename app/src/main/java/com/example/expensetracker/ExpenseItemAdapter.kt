@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 
+//TODO: pozri ako sa sprava minusove
 class ExpenseItemAdapter: BaseAdapter {
     private var context: Context
     private var expenseItems: ArrayList<ExpenseItem>
@@ -38,7 +39,7 @@ class ExpenseItemAdapter: BaseAdapter {
         val balanceTextView =
             itemView.findViewById<TextView>(R.id.current_expense_balance) as TextView
         expenseNameTextView.text = expenseItems[position].name + " - " + expenseItems[position].category
-        balanceTextView.text = expenseItems[position].balance.toString()
+        balanceTextView.text = expenseItems[position].balance.toString() + "€"
 
         return itemView
     }
